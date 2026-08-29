@@ -133,14 +133,16 @@ if __name__ == "__main__":
             st.rerun()
 
     if st.session_state.game_over:
-        st.divider()
-        if st.session_state.winner == "draw":
-            st.warning("🤝 Empate!")
-        else:
-            st.success(f"🏆 Jogador {st.session_state.winner} venceu!!")
+            st.divider()
+            if st.session_state.winner == "draw":
+                st.warning("🤝 Empate! Tente novamente.")
+            else:
+                st.balloons()  # Efeito visual de comemoração
+                st.success(f"🎉 Sensacional! O Jogador {st.session_state.winner} venceu a partida! 🏆")
 
-        if st.button("🔄 Jogar Novamente", use_container_width=True):
-            reset_game()
+            if st.button("🔄 Jogar Novamente", use_container_width=True):
+                reset_game()
+
 
     st.divider()
     if not st.session_state.game_over:
